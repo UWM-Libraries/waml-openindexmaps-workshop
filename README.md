@@ -13,7 +13,7 @@ GeoJSON - what and why
 - History of GeoJSON
 - RFC7946 - WGS84 only, 7 digit precision
 
-Create index map from existing shapefile
+Create polygon index map from existing shapefile
 - NYS elevation indexes
 - QGIS symbology (transparency, outlines only, etc.)
 - show labels
@@ -22,7 +22,14 @@ Create index map from existing shapefile
 - RFC7946, WGTS84
 - beware of date-like fields (ogr2ogr has new option, though!)
 
+Create point index map from CSV
+- NYS aerial photos
+- lat/lon to point
+- refactor fields
+- export as geojson
+
 Create index map from nationalmap NED1
+- convert bounds from text format to polygons
 - QGIS virtual layers, SQL
 
 Create index map from new grid
