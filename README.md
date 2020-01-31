@@ -53,29 +53,39 @@ GeoJSON is a geospatial data format designed for use on the web.  Like other JSO
 GeoJSON provides a standard way to add geospatial location information to JSON.  It was originally released in 2008 as a community-developed specification, and was quickly adopted by many geospatial projects.  It was later revised to become an official IETF specification ([RFC 7946](https://tools.ietf.org/html/rfc7946)) in 2016.
 
 Things to know about GeoJSON:
-- geometries can be points, lines, or polygons
-- All coordinates are in WGS84 (lon, lat)
+- Geometries can be points, lines, or polygons
+- All coordinates are in WGS84 (EPSG:4326) (longitude, latitude order)
+- GeoJSON supports attribute names of any length (whereas shapefiles are limited to 10 characters)
+- 7 digits past the decimal point (0.0000001) is about 1cm precision
+- not recommended for large datasets (>20MB) but should be fine for most index maps
 
-
-
-
-- long attribute names, etc.
-- History of GeoJSON
-- RFC7946 - WGS84 only, 7 digit precision
 
 # QGIS
-- review of QGIS features/tools for those new to QGIS
-- dealing with CRS
-- using selection and identify tools
-- styling, transparency
-- plugins
-- processing toolbox
+
+QGIS is a free, open-source desktop application for mapping and geospatial analysis.  It is a volunteer-driven project with contributers from around the world.  It reads and writes nearly every possible GIS data format, and has many features that are particularly useful for creating OpenIndexMaps GeoJSON files.
+
+A quick tour of QGIS:
+- CRS (coordinate reference system)
+- Identify tool
+- Selection tools
+- Styles (including color, size, transparency)
+- Processing toolbox
+- Plugins (especially QuickMapServices)
+
+TODO expand each of those...
+
+TODO Install the QuickMapServices plugin
+
 
 # Create polygon index map from an existing shapefile
-- example: NYS elevation indexes
+- example: NYS elevation indexes ftp://ftp.gis.ny.gov/elevation/DEM/
 - QGIS symbology (transparency, outlines only, etc.)
 - show labels
 - refactor fields to edit columns and names
+
+![refactor fields](https://kgjenkins.github.io/indexmaps-workshop/image/refactor-fields.png)
+![refactor fields 2](https://kgjenkins.github.io/indexmaps-workshop/image/refactor-fields2.png)
+
 - export as geojson
 - RFC7946, WGTS84
 - beware of date-like fields (ogr2ogr has new option, though!)
