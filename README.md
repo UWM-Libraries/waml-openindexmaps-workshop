@@ -120,21 +120,21 @@ A quick tour of QGIS:
     - Or just specify a new CRS when saving to a new file (right-click layer name > export)
 - Identify tool  ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
 - Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
-  - ![selection tools 1](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools1.png)
-  - ![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
+  - ![selection tools 1](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
 - Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/indexmaps-workshop/image/layer-styling-button.png)
 - Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/indexmaps-workshop/image/processing-button.png)
-- Plugins (over 600!) written by QGIS users provide a wide range of additional functionality
+- Over 600 plugins written by QGIS users provide a wide range of additional functionality
 
 ## QuickMapServices
 
-QuickMapServices is a plugin that provides access to basemaps from OpenStreetMaps, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
+QuickMapServices is a popular plugin that provides access to basemaps from OpenStreetMaps, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
 
-To install a plugin:
+To install the plugin:
 
 1. Plugins menu > Manage and Install Plugins...
 2. Click the "All" tab at left
-3. Type in the search box "quickma" (you don't have to type the whole name)
+3. Type in the search box "quickm" (you don't have to type the whole name)
+4. Click the name "QuickMapServices" in the results
 4. Click "Install Plugin" (it only takes a few seconds)
 
 Each plugin works a bit differently -- some add menus items, some add tool buttons.  QuickMapServices appears under the "Web" menu.  It comes with a few basemaps, but you'll want to add the full set of available basemaps:
@@ -145,7 +145,10 @@ Each plugin works a bit differently -- some add menus items, some add tool butto
 
 
 # Create polygon index map from an existing shapefile
-- example: NYS elevation indexes ftp://ftp.gis.ny.gov/elevation/DEM/
+
+Sometimes data publishers already have index maps for sets of tiled data, like elevation or LiDAR tiles.  These indexes are often in the form of shapefiles.  In this example, we'll convert a shapefile index of elevation tiles for Erie County, New York, already downloaded from <ftp://ftp.gis.ny.gov/elevation/DEM/>
+
+
 - QGIS symbology (transparency, outlines only, etc.)
 - show labels
 - refactor fields to edit columns and names
