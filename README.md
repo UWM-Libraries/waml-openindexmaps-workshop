@@ -108,18 +108,40 @@ QGIS is a free, open-source desktop application for mapping and geospatial analy
 
 A quick tour of QGIS:
 - CRS (coordinate reference system)
+  - EPSG codes uniquely identify a CRS. For example:
+    - EPSG:4326 = WGS 84 (standard latitude/longitude)
+    - EPSG:3857 = WGS 84 / Pseudo-Mercator
+    - EPSG:32610 = WGS 84 / UTM zone 10N
   - Project (map) CRS is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/project-crs.png)
-- Identify tool  ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/identify-tool.png)
-- Selection tools
-![selection tools 1](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools1.png)
-![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
-- Styles (including color, size, transparency)
-- Processing toolbox
-- Plugins (especially QuickMapServices)
+  - Hover over a layer name to see its CRS code
+  - Right-click layer name > Set CRS > Set Layer CRS... **only if it is not yet defined correctly**
+  - If you want to transform the existing coordinates to another CRS:
+    - Use the Reproject Layer tool
+    - Or just specify a new CRS when saving to a new file (right-click layer name > export)
+- Identify tool  ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
+- Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
+  - ![selection tools 1](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools1.png)
+  - ![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
+- Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/indexmaps-workshop/image/layer-styling-button.png)
+- Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/indexmaps-workshop/image/processing-button.png)
+- Plugins (over 600!) written by QGIS users provide a wide range of additional functionality
 
-TODO expand each of those...
+## QuickMapServices
 
-TODO Install the QuickMapServices plugin
+QuickMapServices is a plugin that provides access to basemaps from OpenStreetMaps, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
+
+To install a plugin:
+
+1. Plugins menu > Manage and Install Plugins...
+2. Click the "All" tab at left
+3. Type in the search box "quickma" (you don't have to type the whole name)
+4. Click "Install Plugin" (it only takes a few seconds)
+
+Each plugin works a bit differently -- some add menus items, some add tool buttons.  QuickMapServices appears under the "Web" menu.  It comes with a few basemaps, but you'll want to add the full set of available basemaps:
+
+5. Web menu > QuickMapServices > Settings
+6. Click the "More services" tab
+7. Click "Get contributed pack"
 
 
 # Create polygon index map from an existing shapefile
