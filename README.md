@@ -52,11 +52,53 @@ GeoJSON is a geospatial data format designed for use on the web.  Like other JSO
 
 GeoJSON provides a standard way to add geospatial location information to JSON.  It was originally released in 2008 as a community-developed specification, and was quickly adopted by many geospatial projects.  It was later revised to become an official IETF specification ([RFC 7946](https://tools.ietf.org/html/rfc7946)) in 2016.
 
+Example of a point in GeoJSON:
+```
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [ -122.17, 37.428 ]
+  },
+  "properties": {
+    "name": "Stanford University",
+    "founded": 1885
+  }
+}
+```
+
+Example of a polygon in GeoJSON:
+```
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Mitchell Earth Sciences Building",
+    "this is a *really long* property name!": "but just because \"you can\" doesn't mean you should"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [ -122.172949, 37.426643 ],
+        [ -122.173051, 37.426349 ],
+        [ -122.172398, 37.426208 ],
+        [ -122.172302, 37.426498 ],
+        [ -122.172949, 37.426643 ]
+      ]
+    ]
+  }
+}
+```
+
 Things to know about GeoJSON:
-- Geometries can be points, lines, or polygons
+- Geometries can be points, lines, or polygons (or any combination in the same file)
 - All coordinates are in WGS84 (EPSG:4326) (longitude, latitude order)
-- GeoJSON supports attribute names of any length (whereas shapefiles are limited to 10 characters)
 - 7 digits past the decimal point (0.0000001) is about 1cm precision
+- GeoJSON supports property names of any length (whereas shapefiles are limited to 10 characters)
+- Property order is not significant
+- Property values are either text strings or numbers
+- Double quotes in strings must be escaped as `\"`
+- Single quotes may be escaped (or not)
 - not recommended for large datasets (>20MB) but should be fine for most index maps
 
 
@@ -66,8 +108,11 @@ QGIS is a free, open-source desktop application for mapping and geospatial analy
 
 A quick tour of QGIS:
 - CRS (coordinate reference system)
-- Identify tool
+  - Project (map) CRS is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/project-crs.png)
+- Identify tool  ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/identify-tool.png)
 - Selection tools
+![selection tools 1](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools1.png)
+![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
 - Styles (including color, size, transparency)
 - Processing toolbox
 - Plugins (especially QuickMapServices)
@@ -84,7 +129,6 @@ TODO Install the QuickMapServices plugin
 - refactor fields to edit columns and names
 
 ![refactor fields](https://kgjenkins.github.io/indexmaps-workshop/image/refactor-fields.png)
-![refactor fields 2](https://kgjenkins.github.io/indexmaps-workshop/image/refactor-fields2.png)
 
 - export as geojson
 - RFC7946, WGTS84
