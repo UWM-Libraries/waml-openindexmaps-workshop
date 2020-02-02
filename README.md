@@ -25,15 +25,15 @@ Download the data for this workshop here:
 
 An index map provides a map-based guide to finding individual maps or datasets in a series based upon their location.  They can be grid-like, with each rectangle representing a separate topographic map in a series, for example:
 
-![grid index map](https://kgjenkins.github.io/indexmaps-workshop/image/index-map-grid.png)
+![grid index map](https://kgjenkins.github.io/openindexmaps-workshop/image/index-map-grid.png)
 
 Or they can be point-based, with each point in the index referring to the approximate center of an aerial photo:
 
-![point index map](https://kgjenkins.github.io/indexmaps-workshop/image/index-map-points.png)
+![point index map](https://kgjenkins.github.io/openindexmaps-workshop/image/index-map-points.png)
 
 Or they can even be lines, each representing a LiDAR collection flight line:
 
-![line index map](https://kgjenkins.github.io/indexmaps-workshop/image/index-map-lines.png)
+![line index map](https://kgjenkins.github.io/openindexmaps-workshop/image/index-map-lines.png)
 
 
 # OpenIndexMaps
@@ -117,17 +117,17 @@ A quick tour of QGIS:
     - EPSG:4326 = WGS 84 (standard latitude/longitude)
     - EPSG:3857 = WGS 84 / Pseudo-Mercator
     - EPSG:32610 = WGS 84 / UTM zone 10N
-  - Project (map) CRS is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/project-crs.png)
+  - Project (map) CRS is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/project-crs.png)
   - Hover over a layer name to see its CRS code
   - Right-click layer name > Set CRS > Set Layer CRS... **only if it is not yet defined correctly**
   - If you want to transform the existing coordinates to another CRS:
     - Use the Reproject Layer tool
     - Or just specify a new CRS when saving to a new file (right-click layer name > export)
-- Identify tool  ![EPSG:3857](https://kgjenkins.github.io/indexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
+- Identify tool  ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
 - Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
-  - ![selection tools 1](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
-- Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/indexmaps-workshop/image/layer-styling-button.png)
-- Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/indexmaps-workshop/image/processing-button.png)
+  - ![selection tools 1](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
+- Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
+- Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/processing-button.png)
 - Over 600 plugins written by QGIS users provide a wide range of additional functionality
 
 ## QuickMapServices
@@ -165,7 +165,7 @@ Be sure to extract the contents of the .zip file to your computer.
 - show labels
 - refactor fields to edit columns and names
 
-![refactor fields](https://kgjenkins.github.io/indexmaps-workshop/image/refactor-fields.png)
+![refactor fields](https://kgjenkins.github.io/openindexmaps-workshop/image/refactor-fields.png)
 
 - export as geojson
 - RFC7946, WGTS84
