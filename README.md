@@ -1,5 +1,7 @@
 # Creating GeoJSON for OpenIndexMaps
-a workshop held at Geo4LibCamp, February 3, 2020, 1:30-4:30pm
+A workshop held at Geo4LibCamp, February 3, 2020, 1:30-4:30pm
+by Keith Jenkins, GIS Librarian at Cornell University
+<https://kgjenkins.github.io/openindexmaps-workshop/>
 
 In this workshop, we'll learn how to use QGIS to create OpenIndexMaps GeoJSON files that can be used in GeoBlacklight to provide access to a series of maps or other datasets.
 
@@ -10,10 +12,13 @@ We'll start with a bit of background information about:
 - QGIS
 
 Then we'll work through various scenarios:
-- Create a polygon index map from an existing shapefile
-- Create a point index map from a CSV containing x/y coordinates
-- Create a polygon index map from a CSV containing bounding coordinates
-- Create a grid index map from scratch
+- [Exercise 1](#ex1): Create a polygon index map from an existing shapefile
+- [Exercise 2](#ex2): Create a point index map from a CSV with x/y coordinates
+- [Exercise 3](#ex3): Create a polygon index map from a CSV containing bounds
+- [Exercise 4](#ex4): Create a grid index map from scratch
+
+Download the data for this workshop here:
+- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v0.1.zip>
 
 
 # Index Maps
@@ -144,9 +149,16 @@ Each plugin works a bit differently -- some add menus items, some add tool butto
 7. Click "Get contributed pack"
 
 
-# Create polygon index map from an existing shapefile
+<a name="ex1"></a>
+# Exercise 1: Create a polygon index map from an existing shapefile
 
 Sometimes data publishers already have index maps for sets of tiled data, like elevation or LiDAR tiles.  These indexes are often in the form of shapefiles.  In this example, we'll convert a shapefile index of elevation tiles for Erie County, New York, already downloaded from <ftp://ftp.gis.ny.gov/elevation/DEM/>
+
+If you have not already downloaded the data for this workshop, do so now:
+- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v0.1.zip>
+
+Be sure to extract the contents of the .zip file to your computer.
+
 
 
 - QGIS symbology (transparency, outlines only, etc.)
@@ -159,18 +171,24 @@ Sometimes data publishers already have index maps for sets of tiled data, like e
 - RFC7946, WGTS84
 - beware of date-like fields (ogr2ogr has new option, though!)
 
-# Create point index map from CSV
+
+<a name="ex2"></a>
+# Exercise 2: Create a point index map from a CSV with x/y coordinates
 - example: NYS aerial photos
 - lat/lon to point
 - refactor fields
 - export as geojson
 
-# Create index map from CSV needing some manipulation
+
+<a name="ex3"></a>
+# Exercise 3: Create a polygon index map from a CSV containing bounds
 - example: nationalmap NED1
 - convert bounds from text format to polygons
 - QGIS virtual layers, SQL
 
-# Create index map from new grid
+
+<a name="ex4"></a>
+# Create a grid index map from scratch
 - Create grid in QGIS
 - formula for grid labels
   - label expression like `char(45-bottom+65)||(left+81)`
