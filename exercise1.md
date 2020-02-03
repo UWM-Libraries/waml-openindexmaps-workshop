@@ -3,7 +3,7 @@
 Sometimes data publishers already have index maps for sets of tiled data, like elevation or LiDAR tiles.  These indexes are often in the form of shapefiles.  In this example, we'll convert a shapefile index of elevation tiles for Erie County, New York, already downloaded from <ftp://ftp.gis.ny.gov/elevation/DEM/>
 
 If you have not already downloaded the data for this workshop, do so now:
-- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v0.1.zip>
+- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v1.0.zip>
 
 Be sure to extract the contents of the .zip file to your computer.
 
