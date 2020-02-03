@@ -7,26 +7,32 @@ If you have not already downloaded the data for this workshop, do so now:
 
 Be sure to extract the contents of the .zip file to your computer.
 
-1. Start a new project in QGIS (Project menu > New)
-2. Add the /exercise1/County_Erie2008_DEM_Index.shp by dragging it onto QGIS
+## 1. Add the data to QGIS
+
+- Start a new project in QGIS (Project menu > New)
+- Add the /exercise1/County_Erie2008_DEM_Index.shp by dragging it onto QGIS
 
 Let's verify that the data is in the correct location by adding a basemap, and set our map to use the CRS of the basemap.
 
-3. Web > QuickMapServices > Google > Google Road
-4. Right-click the "OSM Standard" layer name > Set CRS > Set Project CRS from Layer
+- Web > QuickMapServices > Google > Google Road
+- Right-click the "OSM Standard" layer name > Set CRS > Set Project CRS from Layer
+
+## 2. Add some style
 
 To improve the visibility of both the index map and the basemap, let's change the style of the index map:
 
-5. Open the Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
-6. Select the "County_Erie2008_DEM_Index" layer
-7. Click "Simple fill"
-8. Set the "Fill color" to purple with about 50% opacity
+- Open the Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
+- Select the "County_Erie2008_DEM_Index" layer
+- Click "Simple fill"
+- Set the "Fill color" to purple with about 50% opacity
 (another option would be to set the "Fill style" to "No Brush")
-9. Set the "Stroke color" to dark purple
+- Set the "Stroke color" to dark purple
+
+## 3. Explore the data
 
 Let's explore the values in the table, to get an idea of how we might want to convert the fields into OpenIndexMaps properties.
 
-10. Right-click the "County_Erie2008_DEM_Index" layer > Open Attribute Table
+- Right-click the "County_Erie2008_DEM_Index" layer > Open Attribute Table
 
 Notice the values found in the different fields:
 
@@ -48,7 +54,9 @@ For the purposes of an index map, we can probably leave out any columns where ev
 
 QGIS has a processing tool called "Refactor fields" that will let us rename, delete, and manipulate the values of these fields
 
-11. In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.  **Be sure to set all the types to string.**  The lengthand precision values don't matter for strings.
+## 4. Refactor Fields
+
+In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.  **Be sure to set all the types to string.**  The lengthand precision values don't matter for strings.
 
 ![refactor fields dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-refactor-fields.png)
 
@@ -58,13 +66,15 @@ The source expressions can be typed in directly, but if you click on the epsilon
 
 Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
 
-12. Click "Run" and leave the "Refactor fields" dialog open in case you need to make any corrections and run it again.
+Click "Run" and leave the "Refactor fields" dialog open in case you need to make any corrections and run it again.  (You can also get back to via the Processing menu > History)
 
 You should have a new layer called "Refactored" on your map.  Use the identify tool or look at the attribute table to make sure the results look right.  If you need to make any corrections, remove the "Refactored" layer, then go back to the "Parameters" tab of the dialog, make your changes and run it again.
 
+## 5. Save as GeoJSON
+
 Once we're satisfied with the output, we are ready to save it as a GeoJSON file.
 
-13. Right-click the "Refactored" layer > Make Permanent...
+- Right-click the "Refactored" layer > Make Permanent...
   - Set Format = GeoJSON
   - Always click the `...` button to specify where you want the file saved!
   - Under Layer Options, set RFC7946 = YES (this will force it into WGS84, and set decimal precision at 7 digits)
