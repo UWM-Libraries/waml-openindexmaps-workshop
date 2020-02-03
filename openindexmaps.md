@@ -6,7 +6,9 @@ OpenIndexMaps is a community standard for encoding an index map in the GeoJSON f
 
 It describes a set of common properties that can be used to describe each item (map or sub-dataset) in an index map: available, recordIdentifier, downloadUrl, websiteUrl, thumbnailUrl, iiifUrl, label, title, and note.
 
-Currently, GeoBlacklight recognizes just those properties defined by OpenIndexMaps.  Any other properties will be ignored and not displayed in the GBL interface.  (This may change in the future.)  Note also that GBL makes special use of the "label" property to provide a mouseover tooltip on the map:
+Currently, GeoBlacklight recognizes just those properties defined by OpenIndexMaps.  Any other properties will be ignored and not displayed in the GBL interface.  (This may change in the future.)
+
+GBL will make special use of the "label" property to provide a mouseover tooltip on the map:
 
 ![label used as tooltip](https://kgjenkins.github.io/openindexmaps-workshop/image/label-tooltip.png)
 
