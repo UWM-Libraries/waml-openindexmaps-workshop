@@ -56,7 +56,9 @@ QGIS has a processing tool called "Refactor fields" that will let us rename, del
 
 ## 4. Refactor Fields
 
-In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.  **Be sure to set all the types to string.**  The lengthand precision values don't matter for strings.
+In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.
+
+**Be sure to set all the types to string!**  The length and precision values don't matter for strings.
 
 ![refactor fields dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-refactor-fields.png)
 

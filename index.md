@@ -6,7 +6,7 @@ by Keith Jenkins, GIS Librarian at Cornell University
 In this workshop, we'll learn how to use QGIS to create OpenIndexMaps GeoJSON files that can be used in GeoBlacklight (GBL) to provide access to a series of maps or other datasets.
 
 Download the data for this workshop here:
-- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v0.1.zip>
+- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v1.0.zip>
 
 We'll start with a bit of background information about:
 - [Index Maps](index-maps) -- what are they?

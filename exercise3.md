@@ -51,7 +51,7 @@ Once the expression is generating the correct codes, we can copy it and use it t
 - Click "OK" -- the adds the column, but now we are in edit mode
 - Click the pencil icon to toggle editing off (save when prompted)
 
-Now the code is just another property that could be used when we run "Refactor Fields".
+Now the code is just another field that could be used when we run "Refactor Fields".
 
 When in edit mode, other fields could be added and edited while viewing the attribute table.
 
