@@ -25,7 +25,7 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
   - But if the CRS is correct, and you want to transform the existing coordinates to another CRS:
     - Use the Reproject Layer tool
     - Or just specify a new CRS when saving to a new file (right-click layer name > export)
-  - Project (map) CRS is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/project-crs.png)
+  - Project CRS (i.e. the map projection) is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/project-crs.png)
     - Click it to change the Project CRS
     - Or right-click a layer name > Set CRS > Set Project CRS from Layer
 
