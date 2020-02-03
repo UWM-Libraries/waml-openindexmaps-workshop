@@ -3,7 +3,7 @@ A workshop held at Geo4LibCamp, February 3, 2020, 1:30-4:30pm
 by Keith Jenkins, GIS Librarian at Cornell University
 <https://kgjenkins.github.io/openindexmaps-workshop/>
 
-In this workshop, we'll learn how to use QGIS to create OpenIndexMaps GeoJSON files that can be used in GeoBlacklight to provide access to a series of maps or other datasets.
+In this workshop, we'll learn how to use QGIS to create OpenIndexMaps GeoJSON files that can be used in GeoBlacklight (GBL) to provide access to a series of maps or other datasets.
 
 Download the data for this workshop here:
 - <https://github.com/kgjenkins/openindexmaps-workshop/archive/v0.1.zip>
@@ -40,15 +40,17 @@ Or they can even be lines, each representing a LiDAR collection flight line:
 
 OpenIndexMaps provides a specification for encoding an index map in the GeoJSON format.  It provides details and access information about each individual mapsheet or sub-dataset, which can be represented either as points, lines, or polygons.
 
-- [OpenIndexMaps.org](https://openindexmaps.org/) has the basic specification created in 2018
+- [OpenIndexMaps.org](https://openindexmaps.org/) has the basic specification created in 2018.  It defines common properties that are assigned a specific meaning.
 
-The GeoJSON files are shared with others via the OpenIndexMaps organization on GitHub, where several institutions have repositories of index maps:
+Currently, GeoBlacklight recognizes those properties defined by OpenIndexMaps.  Any other properties will be ignored and not displayed in the GBL interface.  (This may change in the future.)  Note also that GBL uses the "label" property to provide a mouseover tooltip on the map.
+
+GeoJSON files are shared with others via the OpenIndexMaps organization on GitHub, where several institutions have repositories of index maps:
 
 - [github.com/OpenIndexMaps](https://github.com/OpenIndexMaps) has repositories of index maps by institution
 
-Further work is currently underway to standarize more elements of an index map, including both the data provided for each map or sub-dataset, as well as information about the collection as a whole.
+Note that many of the files found in those repos may include other local properties that are not defined by, but are still allowed by the specification.  Further work is currently underway to standarize more elements of an index map, including both the data provided for each map or sub-dataset, as well as information about the collection as a whole.
 
-- [GIS Index Map Creation Requirements and Recommendations](https://docs.google.com/document/d/1GS1_4JmgUkZcehiG1qEyQB3e6mRQ7jdGC7rpyesZqIw/edit) is a draft document being developed by a group led by Tom Brittnacher (UCSB)
+- [GIS Index Map Creation Requirements and Recommendations](https://docs.google.com/document/d/1GS1_4JmgUkZcehiG1qEyQB3e6mRQ7jdGC7rpyesZqIw/edit) is a draft document currently being developed by a group led by Tom Brittnacher (UCSB)
 
 
 # GeoJSON
@@ -110,7 +112,10 @@ Things to know about GeoJSON:
   - Property values are either text strings or numbers (real or integer)
   - Double quotes in strings must be escaped as `\"`
   - Single quotes can also be escaped, but it is not required
-- not recommended for large datasets (>20MB) but should be fine for most index maps
+- Online tools
+  - [GeoJSONLint](http://geojsonlint.com/) validates and previews GeoJSON
+  - [GeoJSON.io](http://geojson.io/) validates, also edits and converts formats
+- GeoJSON is not recommended for large datasets (>10MB) but should be fine for most index maps
 
 
 # QGIS
@@ -121,14 +126,12 @@ A quick tour of QGIS:
 - Identify tool  ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
 - Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
 - Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
-  - ![selection tools 1](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/indexmaps-workshop/image/selection-tools2.png)
+  - ![selection tools 1](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools2.png)
 - Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/processing-button.png) contains hundreds of tools, including tools from other open-source GIS programs like GDAL and GRASS
 - Over 600 plugins written by QGIS users provide a wide range of additional functionality
 ## CRS (coordinate reference system)
 
-QGIS, like most open-source GIS programs, uses standard [EPSG codes](http://epsg.io/) for coordinate systems and map projections.
-
-# TODO check that EPSG url
+QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://epsg.io/) for coordinate systems and map projections.
 
   - EPSG codes uniquely identify a CRS. For example:
     - EPSG:4326 = WGS 84 (standard latitude/longitude)
@@ -186,32 +189,39 @@ To improve the visibility of both the index map and the basemap, let's change th
 6. Select the "County_Erie2008_DEM_Index" layer
 7. Click "Simple fill"
 8. Set the "Fill color" to purple with about 50% opacity
+(another option would be to set the "Fill style" to "No Brush")
 9. Set the "Stroke color" to dark purple
 
-Another option would be to set the "Fill style" to "No Brush".  You may also want to adjust the "Stroke width".
+Let's explore the values in the table, to get an idea of how we might want to convert the fields into OpenIndexMaps properties.
 
 10. Right-click the "County_Erie2008_DEM_Index" layer > Open Attribute Table
 
-Explore the values in the table, to get an idea of how we might want to convert the fields into OpenIndexMaps properties.
+Notice the values found in the different fields:
 
-| field | observation |
-|:- |:- |
-| FILENAME | uniquely identifies each tile, useful as title or label |
-| SIZE | size in bytes, which we could convert to a more readable KB and put into a note |
-| COLLECTION | always the same |
-| YEAR | always the same |
-| PARTIAL | indicates tiles with incomplete coverage, could go into a note |
-| DEM_COLLEC | always the same |
-| TILE_DATE | always the same |
-| NOTES | empty |
-| DIRECT_DL | download url |
-| Shape_Leng | irrelevant |
-| Shape_Area | irrelevant |
+FILENAME : uniquely identifies each tile, useful as title or label
+SIZE : size in bytes, which we could convert to a more readable KB and put into a note
+COLLECTION : always the same
+YEAR : always the same
+PARTIAL : indicates tiles with incomplete coverage, could go into a note
+DEM_COLLEC : always the same
+TILE_DATE : always the same
+NOTES : empty
+DIRECT_DL : download url
+Shape_Leng : irrelevant
+Shape_Area : irrelevant
 
+For the purposes of an index map, we can probably leave out any columns where every value is the same.  (It might make more sense to add that information as metadata for the index map as a whole.)
 
-- refactor fields to edit columns and names
+QGIS has a processing tool called "Refactor fields" that will let us rename, delete, and manipulate the values of these fields
+
+11. In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label (the unique identifier from FILENAME), note (size in KB), and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.
 
 ![refactor fields dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-refactor-fields.png)
+
+The source expressions can be typed in directly, but if you click on the epsilon (&epsilon;), QGIS will open an expression editor that provides a full list of available functions, along with syntax highlighting, error checking, and a preview of the output based on the first record.
+
+![expression dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-expression-dialog.png)
+
 
 - export as geojson
 - RFC7946, WGTS84
@@ -245,4 +255,7 @@ Explore the values in the table, to get an idea of how we might want to convert 
 - edit form for names - can hide columns (layer properties > attributes form > drag and drop designer)
 
 
-
+TODO
+geojson.io
+geojson lint
+"available": true
