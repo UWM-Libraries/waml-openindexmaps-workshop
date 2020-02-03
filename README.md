@@ -3,6 +3,8 @@ A workshop held at Geo4LibCamp, February 3, 2020, 1:30-4:30pm
 by Keith Jenkins, GIS Librarian at Cornell University
 <https://kgjenkins.github.io/openindexmaps-workshop/>
 
+<style>img { vertical-align:top }</style>
+
 In this workshop, we'll learn how to use QGIS to create OpenIndexMaps GeoJSON files that can be used in GeoBlacklight (GBL) to provide access to a series of maps or other datasets.
 
 Download the data for this workshop here:
@@ -21,6 +23,7 @@ Then we'll work through various scenarios:
 - [Exercise 4](#ex4): Create a grid index map from scratch
 
 
+
 # Index Maps
 
 An index map provides a map-based guide to finding individual maps or datasets in a series based upon their location.  They can be grid-like, with each rectangle representing a separate topographic map in a series, for example:
@@ -34,6 +37,7 @@ Or they can be point-based, with each point in the index referring to the approx
 Or they can even be lines, each representing a LiDAR collection flight line:
 
 ![line index map](https://kgjenkins.github.io/openindexmaps-workshop/image/index-map-lines.png)
+
 
 
 # OpenIndexMaps
@@ -118,17 +122,21 @@ Things to know about GeoJSON:
 - GeoJSON is not recommended for large datasets (>10MB) but should be fine for most index maps
 
 
+
 # QGIS
 
 QGIS is a free, open-source desktop application for mapping and geospatial analysis.  It is a volunteer-driven project with contributers from around the world.  It reads and writes nearly every possible GIS data format, and has many features that are particularly useful for creating OpenIndexMaps GeoJSON files.
 
 A quick tour of QGIS:
+
 - Identify tool  ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
 - Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
 - Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
   - ![selection tools 1](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools2.png)
 - Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/processing-button.png) contains hundreds of tools, including tools from other open-source GIS programs like GDAL and GRASS
 - Over 600 plugins written by QGIS users provide a wide range of additional functionality
+
+
 ## CRS (coordinate reference system)
 
 QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://epsg.io/) for coordinate systems and map projections.
@@ -145,6 +153,7 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
   - Project (map) CRS is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/project-crs.png)
     - Click it to change the Project CRS
     - Or right-click a layer name > Set CRS > Set Project CRS from Layer
+
 
 ## QuickMapServices
 
@@ -165,6 +174,7 @@ Each plugin works a bit differently -- some add menus items, some add tool butto
 8. Click "Get contributed pack"
 
 
+
 <a name="ex1"></a>
 # Exercise 1: Create a polygon index map from an existing shapefile
 
@@ -180,7 +190,7 @@ Be sure to extract the contents of the .zip file to your computer.
 
 Let's verify that the data is in the correct location by adding a basemap, and set our map to use the CRS of the basemap.
 
-3. Web > QuickMapServices > OSM > OSM Standard
+3. Web > QuickMapServices > Google > Google Road
 4. Right-click the "OSM Standard" layer name > Set CRS > Set Project CRS from Layer
 
 To improve the visibility of both the index map and the basemap, let's change the style of the index map:
@@ -198,23 +208,25 @@ Let's explore the values in the table, to get an idea of how we might want to co
 
 Notice the values found in the different fields:
 
-FILENAME : uniquely identifies each tile, useful as title or label
-SIZE : size in bytes, which we could convert to a more readable KB and put into a note
+```
+FILENAME : uniquely identifies each tile
+SIZE : size in bytes
 COLLECTION : always the same
 YEAR : always the same
-PARTIAL : indicates tiles with incomplete coverage, could go into a note
+PARTIAL : indicates tiles with incomplete coverage
 DEM_COLLEC : always the same
 TILE_DATE : always the same
 NOTES : empty
 DIRECT_DL : download url
 Shape_Leng : irrelevant
 Shape_Area : irrelevant
+```
 
 For the purposes of an index map, we can probably leave out any columns where every value is the same.  (It might make more sense to add that information as metadata for the index map as a whole.)
 
 QGIS has a processing tool called "Refactor fields" that will let us rename, delete, and manipulate the values of these fields
 
-11. In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label (the unique identifier from FILENAME), note (size in KB), and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.
+11. In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.  **Be sure to set all the types to string.**  The lengthand precision values don't matter for strings.
 
 ![refactor fields dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-refactor-fields.png)
 
@@ -222,10 +234,40 @@ The source expressions can be typed in directly, but if you click on the epsilon
 
 ![expression dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-expression-dialog.png)
 
+Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
 
-- export as geojson
-- RFC7946, WGTS84
-- beware of date-like fields (ogr2ogr has new option, though!)
+12. Click "Run" and leave the "Refactor fields" dialog open in case you need to make any corrections and run it again.
+
+You should have a new layer called "Refactored" on your map.  Use the identify tool or look at the attribute table to make sure the results look right.  If you need to make any corrections, remove the "Refactored" layer, then go back to the "Parameters" tab of the dialog, make your changes and run it again.
+
+Once we're satisfied with the output, we are ready to save it as a GeoJSON file.
+
+13. Right-click the "Refactored" layer > Make Permanent...
+  - Set Format = GeoJSON
+  - Always click the '...' button to specify where you want the file saved!
+  - Under Layer Options, set RFC7946 = YES (this will force it into WGS84, and set decimal precision at 7 digits)
+
+Now you should have an index map saved as a GeoJSON file!  If you open it in a text editor, you'll see that it starts something like this:
+
+```
+{
+"type": "FeatureCollection",
+"name": "erie-2008-dem-index",
+"features": [
+```
+
+You could also copy or drag the GeoJSON into [geojsonlint.com](http://geojsonlint.com/), which will check for any parsing errors and also render the GeoJSON in a map.
+
+Notice that only metadata is the "name", which we be whatever you named the file.  It would be a good idea to provide a bit more information, which could be added manually.  At this time, there are no standard properties for the index map as a whole, but that is something that OpenIndexMaps may develop in the future.  Here is an example of what we do for CUGIR:
+
+```
+{
+"type": "FeatureCollection",
+"name": "cugir-009099-index",
+"title": "Index of 2-meter DEM, Tompkins County NY, 2008",
+"websiteUrl": "https://cugir.library.cornell.edu/catalog/cugir-009099",
+```
+
 
 
 <a name="ex2"></a>
