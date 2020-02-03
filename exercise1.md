@@ -64,6 +64,8 @@ In the processing toolbox, search for "refactor fields" and open the tool.  The 
 
 The source expressions can be typed in directly, but if you click on the epsilon (&epsilon;), QGIS will open an expression editor that provides a full list of available functions, along with syntax highlighting, error checking, and a preview of the output based on the first record.
 
+Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
+
 ![expression dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex1-expression-dialog.png)
 
 Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
