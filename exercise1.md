@@ -98,3 +98,7 @@ Due to over-enthusastic date-detection in GDAL (the format translator software t
 Just last month, GDAL 3.0.3 added a DATE_AS_STRING open option that can be set to YES to disable autodetection of date/time/datetime, and I'm hoping that QGIS will start using that to improve the editing of existing GeoJSON files.
 
 In the meantime, if you plan on making further edits to your index map, I would suggest first saving it to another format such as geopackage, edit that, then generate geojson from there.
+
+----
+
+Next: [Exercise 2](exercise2)

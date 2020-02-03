@@ -16,7 +16,7 @@ We'll start with a bit of background information about:
 
 Then we'll work through various scenarios:
 - [Exercise 1](exercise1): Create a polygon index map from an existing shapefile
-- [Exercise 2](exercise2): Create a point index map from a CSV with x/y coordinates
+- [Exercise 2](exercise2): Create a point index map from a spreadsheet containing coordinates
 - [Exercise 3](exercise3): Create a grid index map from scratch
 - [Exercise 4](exercise4): Create a polygon index map using virtual layer magic
 
