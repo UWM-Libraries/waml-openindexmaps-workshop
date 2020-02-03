@@ -45,7 +45,11 @@ Use the "Refactor fields" tool to rename or delete several of the fields:
 - Always click the `...` button to specify where you want the file saved!
 - Under Layer Options, set RFC7946 = YES (this will force it into WGS84, and set decimal precision at 7 digits)
 
-Now we have all the points saved to a single GeoJSON file.  What if we wanted to save each county separately, based on the "county" column?
+Now we have all the points saved to a single GeoJSON file.
+
+## 6. Save a GeoJSON for each county
+
+What if we wanted to save each county separately, based on the "county" column?
 
 - Open the "Split Vector Layer" tool
 - Input layer = "Points from table"

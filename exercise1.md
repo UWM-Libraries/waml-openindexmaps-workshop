@@ -66,7 +66,7 @@ Once we're satisfied with the output, we are ready to save it as a GeoJSON file.
 
 13. Right-click the "Refactored" layer > Make Permanent...
   - Set Format = GeoJSON
-  - Always click the '...' button to specify where you want the file saved!
+  - Always click the `...` button to specify where you want the file saved!
   - Under Layer Options, set RFC7946 = YES (this will force it into WGS84, and set decimal precision at 7 digits)
 
 Now you should have an index map saved as a GeoJSON file!  If you open it in a text editor, you'll see that it starts something like this:
