@@ -32,7 +32,7 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
 
 ## QuickMapServices
 
-QuickMapServices is one of the most popular plugins.  It provides access to basemaps from OpenStreetMaps, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
+QuickMapServices is one of the most popular plugins.  It provides access to basemaps from OpenStreetMap, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
 
 To install the plugin:
 
