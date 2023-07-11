@@ -2,7 +2,7 @@
 
 August 9, 2023, 10:30am-12:00pm PDT
 
-Western Association of Libraries 2023 Conference at the University of British Columbia
+Western Association of Map Libraries 2023 Conference at the University of British Columbia
 
 Adapted from a workshop, _Creating GeoJSON for OpenIndexMaps_
 
