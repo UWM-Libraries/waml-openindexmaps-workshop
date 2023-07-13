@@ -39,3 +39,5 @@ This workshop is a fork of a workshop held at Geo4LibCamp, February 3, 2020
 by Keith Jenkins, GIS Librarian at Cornell University
 
 <https://kgjenkins.github.io/openindexmaps-workshop/>
+
+Note that we skipped Excercise 4 from the original workshop, [_Create a polygon index map using virtual layer magic_](https://kgjenkins.github.io/openindexmaps-workshop/exercise4).
