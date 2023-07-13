@@ -4,6 +4,8 @@ GeoJSON is a geospatial data format designed for use on the web.  Like other JSO
 
 GeoJSON provides a standard way to add geospatial location information to JSON.  It was originally released in 2008 as a community-developed specification, and was quickly adopted by many geospatial projects.  It was later revised to become an official IETF specification ([RFC 7946](https://tools.ietf.org/html/rfc7946)) in 2016.  One of the major changes was that, whereas the 2008 allowed arbitrary coordinate systems, the 2016 standard mandates WGS84 (lon, lat) coordinates.
 
+`todo: replace with newer example`
+
 Example of a point in GeoJSON:
 ```
 {
@@ -18,6 +20,8 @@ Example of a point in GeoJSON:
   }
 }
 ```
+
+`todo: replace with newer example`
 
 Example of a polygon in GeoJSON:
 ```

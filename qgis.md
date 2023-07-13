@@ -4,6 +4,8 @@ QGIS is a free, open-source desktop application for mapping and geospatial analy
 
 A quick tour of QGIS:
 
+`TODO: check if these thumbnails have changed at all and consider updating links`
+
 - Identify tool  ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
 - Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
 - Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
@@ -25,6 +27,9 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
   - But if the CRS is correct, and you want to transform the existing coordinates to another CRS:
     - Use the Reproject Layer tool
     - Or just specify a new CRS when saving to a new file (right-click layer name > export)
+
+`TODO: check image link`
+
   - Project CRS (i.e. the map projection) is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/project-crs.png)
     - Click it to change the Project CRS
     - Or right-click a layer name > Set CRS > Set Project CRS from Layer
@@ -33,6 +38,8 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
 ## QuickMapServices
 
 QuickMapServices is one of the most popular plugins.  It provides access to basemaps from OpenStreetMap, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
+
+`TODO: Make sure these steps haven't changed in newer versions`
 
 To install the plugin:
 
