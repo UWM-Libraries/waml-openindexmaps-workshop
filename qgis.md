@@ -1,16 +1,21 @@
 # QGIS
 
-QGIS is a free, open-source desktop application for mapping and geospatial analysis.  It is a volunteer-driven project with contributers from around the world.  It reads and writes nearly every possible GIS data format, and has many features that are particularly useful for creating OpenIndexMaps GeoJSON files.
+QGIS is a free, open-source desktop application for mapping and geospatial analysis.
+It is a volunteer-driven project with contributers from around the world.
+It reads and writes nearly every possible GIS data format,
+and has many features that are particularly useful for creating OpenIndexMaps GeoJSON files.
+
+For this workshop, we recommend using version 3.28.5 Firenze LTR.
+LTR stands for Long Term Release and means that the QGIS developer community has committed to maintaining
+this version for a longer time, even as newer versions are released.
 
 A quick tour of QGIS:
 
-`TODO: check if these thumbnails have changed at all and consider updating links`
-
-- Identify tool  ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/identify-tool.png) lets you look at a feature's attributes
-- Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
+- Identify tool  ![EPSG:3857](/image/identify-tool.png) lets you look at a feature's attributes
+- Layer Styling panel ![processing toolbox button](/image/layer-styling-button.png)
 - Selection tools are useful for running processing tools on subsets, or saving subsets as new layers
-  - ![selection tools 1](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools1.png) and ![selection tools 2](https://kgjenkins.github.io/openindexmaps-workshop/image/selection-tools2.png)
-- Processing toolbox ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/processing-button.png) contains hundreds of tools, including tools from other open-source GIS programs like GDAL and GRASS
+  - ![selection tools 1](/image/selection-tools1.png) and ![selection tools 2](/image/selection-tools2.png)
+- Processing toolbox ![processing toolbox button](/image/processing-button.png) contains hundreds of tools, including tools from other open-source GIS programs like GDAL and GRASS
 - Over 600 plugins written by QGIS users provide a wide range of additional functionality
 
 
@@ -28,9 +33,7 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
     - Use the Reproject Layer tool
     - Or just specify a new CRS when saving to a new file (right-click layer name > export)
 
-`TODO: check image link`
-
-  - Project CRS (i.e. the map projection) is identified in lower-right corner ![EPSG:3857](https://kgjenkins.github.io/openindexmaps-workshop/image/project-crs.png)
+  - Project CRS (i.e. the map projection) is identified in lower-right corner ![EPSG:3857](/image/project-crs.png)
     - Click it to change the Project CRS
     - Or right-click a layer name > Set CRS > Set Project CRS from Layer
 
@@ -38,8 +41,6 @@ QGIS, like most open-source GIS programs, uses standard [EPSG codes](https://eps
 ## QuickMapServices
 
 QuickMapServices is one of the most popular plugins.  It provides access to basemaps from OpenStreetMap, Google, Bing, Esri, and more.  Basemaps are useful for adding context to your maps, or to make sure that your data is showing up in the right place.
-
-`TODO: Make sure these steps haven't changed in newer versions`
 
 To install the plugin:
 
