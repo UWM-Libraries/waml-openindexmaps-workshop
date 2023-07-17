@@ -15,15 +15,14 @@ Be sure to extract the contents of the .zip file to your computer.
 
 Let's verify that the data is in the correct location by adding a basemap, and set our map to use the CRS of the basemap.
 
-TODO: Use OSM? `- Web > QuickMapServices > Google > Google Road`
-`- Right-click the "OSM Standard" layer name > Set CRS > Set Project CRS from Layer`
+- Web > QuickMapServices > OSM > OSM Standard`
+- Right-click the "OSM Standard" layer name > Layer CRS > Set Project CRS from Layer`
 
 ## 2. Add some style
 
 To improve the visibility of both the index map and the basemap, let's change the style of the index map:
 
-`TODO: Replace image links`
-- Open the Layer Styling panel ![processing toolbox button](https://kgjenkins.github.io/openindexmaps-workshop/image/layer-styling-button.png)
+- Open the Layer Styling panel ![processing toolbox button](/image/layer-styling-button.png)
 - Select the "cuba_62k_1913_gdx" layer
 - Click "Simple fill"
 - Set the "Fill color" to purple with about 50% opacity
@@ -37,6 +36,7 @@ Let's explore the values in the table, to get an idea of how we might want to co
 - Right-click the "cuba_62k_1913_gdx" layer > Open Attribute Table
 
 `TODO: replace the field names with GDX or cleaned up version`
+`I'm going to clean up the data because Geodex has so many fields that we won't use in the workshop. Still TODO!`
 
 Notice the values found in the different fields:
 
@@ -54,9 +54,9 @@ Shape_Leng : irrelevant
 Shape_Area : irrelevant
 ```
 
-`TODO: Check to see if this is the case in the new schema` 
-
-For the purposes of an index map, we can probably leave out any columns where every value is the same.  (It would probably make more sense to add that information as metadata for the index map as a whole -- see the end of this exercise.)
+Note that some of the data is the same for each sheet in the set. 
+See the note about [Set- and Flight-level metadata](https://openindexmaps.org/specification/1.0.0#set--and-flight-level-metadata)
+in the schema documentation.
 
 QGIS has a processing tool called "Refactor fields" that will let us rename, delete, and manipulate the values of these fields
 
