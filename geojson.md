@@ -4,42 +4,41 @@ GeoJSON is a geospatial data format designed for use on the web.  Like other JSO
 
 GeoJSON provides a standard way to add geospatial location information to JSON.  It was originally released in 2008 as a community-developed specification, and was quickly adopted by many geospatial projects.  It was later revised to become an official IETF specification ([RFC 7946](https://tools.ietf.org/html/rfc7946)) in 2016.  One of the major changes was that, whereas the 2008 allowed arbitrary coordinate systems, the 2016 standard mandates WGS84 (lon, lat) coordinates.
 
-`todo: replace with newer example`
-
 Example of a point in GeoJSON:
 ```
 {
   "type": "Feature",
+  "properties": {
+    "name": "Walter C. Koerner Library",
+    "address": "1958 Main Mall, Vancouver, BC V6T 1Z2, Canada"
+  },
   "geometry": {
     "type": "Point",
-    "coordinates": [ -122.17, 37.428 ]
-  },
-  "properties": {
-    "name": "Stanford University",
-    "founded": 1885
+    "coordinates": [
+      -123.25509914782164,
+      49.26669325071529
+    ]
   }
 }
 ```
-
-`todo: replace with newer example`
 
 Example of a polygon in GeoJSON:
 ```
 {
   "type": "Feature",
   "properties": {
-    "name": "Mitchell Earth Sciences Building",
-    "this is a *really long* property name!": "but just because \"you can\" doesn't mean you should"
+    "name": "Walter C. Koerner Library",
+    "address": "1958 Main Mall, Vancouver, BC V6T 1Z2, Canada" 
   },
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [ -122.172949, 37.426643 ],
-        [ -122.173051, 37.426349 ],
-        [ -122.172398, 37.426208 ],
-        [ -122.172302, 37.426498 ],
-        [ -122.172949, 37.426643 ]
+        [-123.255467, 49.266867],
+        [-123.2550320, 49.266320],
+        [-123.254822, 49.266392],
+        [-123.255256, 49.266948],
+        [-123.255467, 49.266867]
       ]
     ]
   }
