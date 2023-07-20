@@ -8,26 +8,26 @@ It describes a set of common properties that can be used to describe each item (
 
 ## Index maps in GeoBlacklight
 
-Additionally, index maps created using the community standard are recognized by GeoBlacklight software.  While not all desired functionality has been implemented in GeoBlacklight yet, institutions can utilize the power of online index maps as an interactive finding aid.
+Additionally, index maps created using the community standard are recognized by GeoBlacklight software.  Institutions can utilize the power of online index maps as an interactive finding aid.
 
 For example, GeoBlacklight will use the "label" property to provide a mouseover tooltip on the map:
 
 ![label used as tooltip](https://kgjenkins.github.io/openindexmaps-workshop/image/label-tooltip.png)
 
-GBL will also display the thumbnailUrl image along with the other OpenIndexMaps property values when a feature is clicked:
+GeoBlacklight will also display the thumbnailUrl image along with the other OpenIndexMaps property values when a feature is clicked:
 
 ![GeoBlacklight index map click](https://kgjenkins.github.io/openindexmaps-workshop/image/gbl-click.png)
 
+Not all functionality has been incorporated into GeoBlacklight yet.  For example, only the top polygon of overlapping polygons in an index map can be selected by a cursor, although overlapping polygons are suggested in the standard when multiple editions of a single map sheet are available.  
 
 ## Sharing Index Maps
 
-GeoJSON files are shared with others via the OpenIndexMaps organization on GitHub, where several institutions have repositories of index maps:
+The community also wanted a place to share these standard index maps so that other institutions can benefit from their work.  Therefore, the OpenIndexMaps GitHub site was created where several institutions have repositories of index maps:
 
 - [github.com/OpenIndexMaps](https://github.com/OpenIndexMaps) has repositories of index maps by institution
 
-Note that many of the files found in those repos may include other local properties that are not defined (but are still allowed) by the specification.  Further work is currently underway to standarize more elements of an index map, including both the data provided for each map or sub-dataset, as well as information about the collection as a whole.
-
-- [GIS Index Map Creation Requirements and Recommendations](https://docs.google.com/document/d/1GS1_4JmgUkZcehiG1qEyQB3e6mRQ7jdGC7rpyesZqIw/edit) is a draft document currently being developed by a group led by Tom Brittnacher (UCSB)
+Note that many of the files found in those repos may include other local properties that are not defined (but are still allowed) by the standard.  Also, some files predate the current version of the standard.
+  Further work on the standard is still needed, including recommendations for entering information about the collection as a whole.  
 
 ----
 
