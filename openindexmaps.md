@@ -10,7 +10,7 @@ It describes a set of common properties that can be used to describe each item (
 
 Additionally, index maps created using the community standard are recognized by GeoBlacklight software.  While not all desired functionality has been implemented in GeoBlacklight yet, institutions can utilize the power of online index maps as an interactive finding aid.
 
-GBL will make special use of the "label" property to provide a mouseover tooltip on the map:
+For example, GeoBlacklight will use the "label" property to provide a mouseover tooltip on the map:
 
 ![label used as tooltip](https://kgjenkins.github.io/openindexmaps-workshop/image/label-tooltip.png)
 
