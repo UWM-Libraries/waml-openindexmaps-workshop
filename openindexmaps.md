@@ -4,11 +4,11 @@ OpenIndexMaps is a community standard for encoding an index map with details and
 
 - [OpenIndexMaps.org](https://openindexmaps.org/specification/1.0.0) shows the latest specification finalized in 2021.
 
-It describes a set of common properties that can be used to describe each item (map or sub-dataset) in an index map: available, recordIdentifier, downloadUrl, websiteUrl, thumbnailUrl, iiifUrl, label, title, and note.
+It describes a set of common properties that can be used to describe each item (map or air photo) in an index map.  The key is for each index map to use the same element names (also known as fields or column headers in an attribute table) and values (the terms entered into the cells in that column).  This commonality allows participating institutions to understand and interpret each others' index maps.
 
 ## Index maps in GeoBlacklight
 
-Currently, GeoBlacklight recognizes just those properties defined by OpenIndexMaps.  Any other properties will be ignored and not displayed in the GBL interface.  (This may change in the future.)
+Additionally, index maps created using the community standard are recognized by GeoBlacklight software.  While not all desired functionality has been implemented in GeoBlacklight yet, institutions can utilize the power of online index maps as an interactive finding aid.
 
 GBL will make special use of the "label" property to provide a mouseover tooltip on the map:
 
