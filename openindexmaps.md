@@ -2,7 +2,7 @@
 
 OpenIndexMaps is a community standard for encoding an index map with details and access information about each individual map sheet or air photo frame.  The standard file format is the GeoJSON, which represents an index map as either points, lines, or polygons.
 
-- ([OpenIndexMaps.org](https://openindexmaps.org/specification/1.0.0)) shows the latest specification finalized in 2021.
+- [OpenIndexMaps.org](https://openindexmaps.org/specification/1.0.0) shows the latest specification finalized in 2021.
 
 It describes a set of common properties that can be used to describe each item (map or sub-dataset) in an index map: available, recordIdentifier, downloadUrl, websiteUrl, thumbnailUrl, iiifUrl, label, title, and note.
 
