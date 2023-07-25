@@ -50,7 +50,9 @@ QGIS dynamic label expressions can help us to figure out the formula in an itera
 Once the expression is generating the correct codes, we can copy it and use it to create a new column.
 
 - Copy the value expression for the labels
+- Open the Attribute Table.
 - Open the Field Calculator ![field calculator button](/image/field-calculator.png)
+- Check the "Create a new field" box
 - Output field name = "code"
 - Output field type = "Text (string)"
 - Paste the expression into the large area on the left of the dialog
