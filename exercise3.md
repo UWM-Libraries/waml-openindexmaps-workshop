@@ -66,6 +66,4 @@ When in edit mode, other fields could be added and edited while viewing the attr
 
 ----
 
-`TODO: update or replace`
 
-Next: [UPDATE ME]()
