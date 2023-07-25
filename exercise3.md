@@ -32,13 +32,14 @@ Although we could just add a new column and type in the value for every cell, th
 
 Use the Identify tool ![identify tool](/image/identify-tool.png) to look at the attributes for one of the grid cells.  Notice that it includes values for the left, top, right, and bottom coordinates of the cell.
 
-- Open the Layer Styling Panel, and select the "Grid" layer
-- Click the "ABC" button on the left of the panel to switch to label styling
+- Open the Properties... dialog box
+- Click the "Labels" button on the left of the panel to switch to label styling
 - Change "No labels" to "Single labels"
-- Set Value = `top`
+- Set Value = `top` and click "Apply"
 
 QGIS dynamic label expressions can help us to figure out the formula in an iterative manner.  The complete formula is below, but here is the sequence used to figure it out.  After typing to change the `top` expression, just press "tab" or click elsewhere and the labels will update on the map.
 
+- Click the expression button to the right of the Value field.
 - `top*4` (to get whole numbers)
 - `165-top*4` (so that the top row is 1, and the numbers increase southwards)
 - `char(64 + 165-top*4)` (this converts the numbers to letters -- char(65) is A, char(66) is B, etc.)
