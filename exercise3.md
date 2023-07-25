@@ -15,11 +15,11 @@ A 15-minute quad is 15/60 or 1/4 of a degree, so we need to create a rectangular
 - Move your cursor to the four corners of the state and note the values shown in the Coordinate display ![Coordinate](/image/ex3-coordinate.png).
 - Open the "Create Grid" processing tool
 - Set the following parameters:
-  -- Grid type = Rectangle (Polygon)
-  -- Grid extent -- click the down arrow on the far right and select > Draw on Map Canvas, then drag a rectangle covering Colorado
-  -- Fine tune the Grid extent coordinates by rounding to the nearest whole number ("-109, -102, 37, 41")
-  -- Set the horizontal and vertical spacing to 0.25 degrees
-  -- Leave the default values for the other fields
+  - Grid type = Rectangle (Polygon)
+  - Grid extent -- click the down arrow on the far right and select > Draw on Map Canvas, then drag a rectangle covering Colorado
+  - Fine tune the Grid extent coordinates by rounding to the nearest whole number ("-109, -102, 37, 41")
+  - Set the horizontal and vertical spacing to 0.25 degrees
+  - Leave the default values for the other fields
 - Click "Run"
 
 ## 2. Label the cells
