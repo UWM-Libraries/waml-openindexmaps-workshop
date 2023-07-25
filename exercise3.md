@@ -64,7 +64,7 @@ According to the standard, map sheet labels should be entered into a field (colu
 - Click "OK" -- the adds the column, but now we are in edit mode
 - Click the pencil icon to toggle editing off (save when prompted)
 
-Now the code is just another field that could be used when we run "Refactor Fields".
+Now the label is another field that could be used when we run "Refactor Fields".
 
 When in edit mode, other fields could be added and edited while viewing the attribute table.
 
