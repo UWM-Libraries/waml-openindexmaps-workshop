@@ -8,10 +8,11 @@ We'll use the OpenStreetMap basemap for reference.
 
 ## 1. Create the grid
 
-A 15-minute quad is 15/60 or 1/4 of a degree, so we need to create a rectangular grid where each cell is 0.25 degrees wide and tall.  To cover all of Colorado, so we'll need to figure out the lat/lon bounds of the state.
+A 15-minute quad is 15/60 or 1/4 of a degree, so we need to create a rectangular grid where each cell is 0.25 degrees wide and tall.  To cover all of Colorado, we'll need to figure out the latitude and longitude bounds of the state.
 
 - Zoom in to Colorado (shift-drag will zoom into the rectangle you select)
 - Click the Project CRS ![EPSG:3857](/image/project-crs.png) and change it to EPSG:4326 "WGS 84"
+- Move your cursor to the four corners of the state and note the values shown in the Coordinate display.
 - Open the "Create Grid" processing tool
 - Grid type = Rectangle (Polygon)
 
