@@ -52,8 +52,8 @@ Once the expression is generating the correct codes, we can copy it and use it t
 - Copy the value expression for the labels
 - Open the Attribute Table.
 - Open the Field Calculator ![field calculator button](/image/field-calculator.png)
-- Check the "Create a new field" box
-- Output field name = "code"
+- Make sure the "Create a new field" box is checked
+- Output field name = "label"
 - Output field type = "Text (string)"
 - Paste the expression into the large area on the left of the dialog
 - Check the output preview beneath
