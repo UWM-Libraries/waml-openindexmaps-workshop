@@ -37,14 +37,15 @@ Use the Identify tool ![identify tool](/image/identify-tool.png) to look at the 
 - Change "No labels" to "Single labels"
 - Set Value = `top` and click "Apply"
 
-QGIS dynamic label expressions can help us to figure out the formula in an iterative manner.  The complete formula is below, but here is the sequence used to figure it out.  After typing to change the `top` expression, just press "tab" or click elsewhere and the labels will update on the map.
+QGIS dynamic label expressions can help us to figure out the formula in an iterative manner.  The complete formula is below, but here is the sequence used to figure it out. 
 
 - Click the expression button ![Expression](/image/ex3-expression.png) to the right of the Value field.
-- `top*4` (to get whole numbers)
-- `165-top*4` (so that the top row is 1, and the numbers increase southwards)
-- `char(64 + 165-top*4)` (this converts the numbers to letters -- char(65) is A, char(66) is B, etc.)
-- `char(64 + 165-top*4) || (left*4)` (this appends numbers based on the longitude)
-- `char(64 + 165-top*4) || (437 + left*4)` (so that the left column is 1, and increases to the east)
+- Change the expression as indicated below.  After typing to change the `top` expression, just press "tab" or click elsewhere and the labels will update on the map.
+  - `"top"*4` (to get whole numbers)
+  - `165-"top"*4` (so that the top row is 1, and the numbers increase southwards)
+  - `char(64 + 165-"top"*4)` (this converts the numbers to letters -- char(65) is A, char(66) is B, etc.)
+  - `char(64 + 165-"top"*4) || ("left"*4)` (this appends numbers based on the longitude)
+  - `char(64 + 165-"top"*4) || (437 + "left"*4)` (so that the left column is 1, and increases to the east)
 
 Once the expression is generating the correct codes, we can copy it and use it to create a new column.
 
