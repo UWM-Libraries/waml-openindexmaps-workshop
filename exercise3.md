@@ -12,7 +12,7 @@ A 15-minute quad is 15/60 or 1/4 of a degree, so we need to create a rectangular
 
 - Zoom in to Colorado (shift-drag will zoom into the rectangle you select)
 - Click the Project CRS ![EPSG:3857](/image/project-crs.png) and change it to EPSG:4326 "WGS 84"
-- Move your cursor to the four corners of the state and note the values shown in the Coordinate display ![Coordinate-box](/image/ex3-Coordinate-box.png).
+- Move your cursor to the four corners of the state and note the values shown in the Coordinate display.
 - Open the "Create Grid" processing tool
 - Grid type = Rectangle (Polygon)
 
