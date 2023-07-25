@@ -47,10 +47,9 @@ QGIS dynamic label expressions can help us to figure out the formula in an itera
   - `char(64 + 165-"top"*4) || ("left"*4)` (this appends numbers based on the longitude)
   - `char(64 + 165-"top"*4) || (437 + "left"*4)` (so that the left column is 1, and increases to the east)
 
-## 3. Add fields to the attribute table
+## 3. Add columns to the attribute table
 
-Once the expression is generating the correct codes, we can copy it and use it to create a new column.
-According to the standard, map sheet labels should be entered into a field called "label".
+According to the standard, map sheet labels should be entered into a field (column) called "label".  We can copy the code from the previous step and use it to enter values into a new column.
 
 ![labelStandard](/image/ex3-labelStandard.png)
 
