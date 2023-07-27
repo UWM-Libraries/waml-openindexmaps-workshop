@@ -5,7 +5,7 @@ Many collections of historical aerial photos have not been fully georeferenced, 
 ## 1. Load the spreadsheet
 
 - Start a new project in QGIS and add the Google Road basemap
-- Add the /exercise2/ny-aerials-1930s.csv by dragging the file onto the map
+- Add the /exercise-optional/ny-aerials-1930s.csv by dragging the file onto the map
 
 Adding a CSV in this manner will treat all fields as text strings, which is okay, because we are going to use the Refactor Fields tool anyway, at which point we can specify the data types.
 

@@ -4,7 +4,7 @@ TODO: Data Introduction
 
 If you have not already downloaded the data for this workshop, do so now:
 
-TODO: Link: `- <https://github.com/kgjenkins/openindexmaps-workshop/archive/v1.0.zip>`
+[Download Data](/index.md/#download-the-data-for-this-workshop)
 
 Be sure to extract the contents of the .zip file to your computer.
 
@@ -119,19 +119,11 @@ Notice that only metadata is the "name", which we be whatever you named the file
 #```
 ```
 
-TODO: Revise:
-
-```
-
 ## A word of warning
 
 Due to over-enthusastic date-detection in GDAL (the format translator software that QGIS uses under the hood), if you try to edit an existing GeoJSON file that has date strings, they might get silently mangled into a different date string format.
 
-Just last month, GDAL 3.0.3 added a DATE_AS_STRING open option that can be set to YES to disable autodetection of date/time/datetime, and I'm hoping that QGIS will start using that to improve the editing of existing GeoJSON files.
-
-In the meantime, if you plan on making further edits to your index map, I would suggest first saving it to another format such as geopackage, edit that, then generate geojson from there.
-
-```
+If you plan on making further edits to your index map, I would suggest first saving it to another format such as geopackage, edit that, then generate geojson from there.
 
 ----
 
