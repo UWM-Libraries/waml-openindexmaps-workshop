@@ -1,62 +1,73 @@
-# Exercise 2: Create a point index map from a spreadsheet containing coordinates
+# Exercise 3: Create a grid index map from scratch
 
-Many collections of historical aerial photos have not been fully georeferenced, but there may exist rough latitude/longitude coordinates for each photo.  In this exercise, we'll take a spreadsheet containing coordinates and turn it into a point-based index map.
+In this scenario we will create an index map from scratch
+using a grid of 15-minute quads for the state of Colorado.
+We'll use the OpenStreetMap basemap for reference.
 
-## 1. Load the spreadsheet
+- Start a new project in QGIS and add the OSM Basemap using the QuickMapServices plugin.
 
-- Start a new project in QGIS and add the Google Road basemap
-- Add the /exercise2/ny-aerials-1930s.csv by dragging the file onto the map
+## 1. Create the grid
 
-Adding a CSV in this manner will treat all fields as text strings, which is okay, because we are going to use the Refactor Fields tool anyway, at which point we can specify the data types.
+A 15-minute quad is 15/60 or 1/4 of a degree, so we need to create a rectangular grid where each cell is 0.25 degrees wide and tall.  To cover all of Colorado, we'll need to figure out the latitude and longitude bounds of the state.
 
-Spreadsheets in the form of .xlsx Excel files could also be used, in which case QGIS should automatically respect the cell types.
-
-## 2. Turn the rows into points
-
-- In the processing toolbox, open the "Create Points Layer From Table" tool
-- Select the X and Y fields (x=longitude, y=latitude)
-- Select the appropriate "Target CRS"
+- Zoom in to Colorado (shift-drag will zoom into the rectangle you select)
+- Click the Project CRS ![EPSG:3857](/image/project-crs.png) and change it to EPSG:4326 "WGS 84"
+- Move your cursor to the four corners of the state and note the values shown in the Coordinate display ![Coordinate](/image/ex2-coordinate.png).
+- Open the "Create Grid" processing tool
+- Set the following parameters:
+  - Grid type > Rectangle (Polygon)
+  - Grid extent > click the down arrow on the far right and select > Draw on Map Canvas, then drag a rectangle covering Colorado
+  - Fine tune the Grid extent coordinates by rounding to the nearest whole number ("-109, -102, 37, 41")
+  - Set the horizontal and vertical spacing to 0.25 degrees
+  - Leave the default values for the other fields
 - Click "Run"
 
-In this example, the columns are WGS 84 longitude and latitude.  If your data has x/y values in a different coordinate system, be sure to select the appropriate CRS.
+## 2. Label the cells
 
-## 3. Explore the data
+Let's suppose we have a Colorado map series that uses these quads, and each map is number A1, A2, A3 across the top row, and A1, B1, C1 down the left column, like this:
 
-Let's explore the values of some of the columns by setting the point color from one of those columns.
+![grid labels](/image/ex2-grid-labels.png)
 
-- Right-click the "Points from table" layer > Zoom to layer
-- Open the Layer Styling Panel and change "Single symbol" to "Categorized"
-- Set "Value" to "county", then click the "Classify" button
+Although we could just add a new column and type in the value for every cell, that would be very tedious and prone to error.  With some experimentation, we can figure out a formula for calculating the code for each cell.
 
-![Categorized by county](https://kgjenkins.github.io/openindexmaps-workshop/image/ex2-categorized-county.png)
+Use the Identify tool ![identify tool](/image/identify-tool.png) to look at the attributes for one of the grid cells.  Notice that it includes values for the left, top, right, and bottom coordinates of the cell.
 
-Try categorizing by year, and notice how photos from different years were used to fill in gaps.  (This is why we aren't planning to separate out different years into different files.)
+- Open the Properties... dialog box
+- Click the "Labels" button on the left of the panel to switch to label styling
+- Change "No labels" to "Single labels"
+- Set Value = `top` and click "Apply"
 
-## 4. Refactor fields
+QGIS dynamic label expressions can help us to figure out the formula in an iterative manner.  The complete formula is below, but here is the sequence used to figure it out. 
 
-Use the "Refactor fields" tool to rename or delete several of the fields:
+- Click the expression button ![Expression](/image/ex2-expression.png) to the right of the Value field.
+- Change the expression as indicated below.  After typing to change the `top` expression, click "OK" and then click the "Apply" button.
+  - `"top"*4` (to get whole numbers)
+  - `165-"top"*4` (so that the top row is 1, and the numbers increase southwards)
+  - `char(64 + 165-"top"*4)` (this converts the numbers to letters -- char(65) is A, char(66) is B, etc.)
+  - `char(64 + 165-"top"*4) || ("left"*4)` (this appends numbers based on the longitude)
+  - `char(64 + 165-"top"*4) || (437 + "left"*4)` (so that the left column is 1, and increases to the east)
 
-![refactor fields dialog](https://kgjenkins.github.io/openindexmaps-workshop/image/ex2-refactor-fields.png)
+## 3. Add columns to the attribute table
 
-## 5. Save as GeoJSON
+According to the standard, map sheet labels should be entered into a field (column) called "label".  We can copy the code from the previous step and use it to enter values into a new column.
 
-- Right-click the “Refactored” layer > Make Permanent…
-- Set Format = GeoJSON
-- Always click the `...` button to specify where you want the file saved!
-- Under Layer Options, set RFC7946 = YES (this will force it into WGS84, and set decimal precision at 7 digits)
+![labelStandard](/image/ex2-labelStandard.png)
 
-Now we have all the points saved to a single GeoJSON file.
+- Copy the value expression for the labels
+- Open the Attribute Table.
+- Open the Field Calculator ![field calculator button](/image/field-calculator.png)
+- Make sure the "Create a new field" box is checked
+- Output field name = "label"
+- Output field type = "Text (string)"
+- Paste the expression into the large area on the left of the dialog
+- Check the output preview beneath
+- Click "OK" -- the adds the column, but now we are in edit mode
+- Click the pencil icon to toggle editing off (save when prompted)
 
-## 6. Save a GeoJSON for each county
+Now the label is another field that could be used when we run "Refactor Fields".
 
-What if we wanted to save each county separately, based on the "county" column?
-
-- Open the "Split Vector Layer" tool
-- Input layer = "Points from table"
-- Unique ID field = "county"
-- Output directory -- click the `...` to select a folder
-- Click "Run"
+When in edit mode, other fields could be added and edited while viewing the attribute table.
 
 ----
 
-Next: [Exercise 3](exercise3)
+Next: [Optional Exercise](exercise-optional)

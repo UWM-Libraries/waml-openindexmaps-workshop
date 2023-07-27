@@ -28,10 +28,12 @@ We'll start with a bit of background information about:
 
 Then we'll work through various scenarios:
 - [Exercise 1](exercise1): Create a polygon index map from an existing shapefile
-- [Exercise 2](exercise2): Create a point index map from a spreadsheet containing coordinates
-- [Exercise 3](exercise3): Create a grid index map from scratch
+- [Exercise 2](exercise2): Create a grid index map from scratch
 
 Finally, we will lead a disussion about future steps, community feedback, and questions.
+
+If you want to try an example using point data from a spreadsheet containing coordinates, you can do the optional exercise:
+- [Optional Exercise](exercise-optional): Create a point index map from a spreadsheet containing coordinates
 
 ## Credits
 
@@ -40,4 +42,4 @@ by Keith Jenkins, GIS Librarian at Cornell University
 
 <https://kgjenkins.github.io/openindexmaps-workshop/>
 
-Note that we skipped Excercise 4 from the original workshop, [_Create a polygon index map using virtual layer magic_](https://kgjenkins.github.io/openindexmaps-workshop/exercise4).
+Note that we skipped Excercise 4 from the original workshop, [_Create a polygon index map using virtual layer magic_](https://kgjenkins.github.io/openindexmaps-workshop/exercise4). We also turned exercise 2 from the original workshop into the optional exercise.
