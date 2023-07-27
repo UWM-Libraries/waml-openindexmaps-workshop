@@ -1,4 +1,4 @@
-# Exercise 3: Create a grid index map from scratch
+# Exercise 2: Create a grid index map from scratch
 
 In this scenario we will create an index map from scratch
 using a grid of 15-minute quads for the state of Colorado.

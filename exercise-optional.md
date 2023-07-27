@@ -1,4 +1,4 @@
-# Exercise 2: Create a point index map from a spreadsheet containing coordinates
+# Optional Exercise: Create a point index map from a spreadsheet containing coordinates
 
 Many collections of historical aerial photos have not been fully georeferenced, but there may exist rough latitude/longitude coordinates for each photo.  In this exercise, we'll take a spreadsheet containing coordinates and turn it into a point-based index map.
 
