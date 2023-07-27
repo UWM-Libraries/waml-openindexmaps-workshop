@@ -12,11 +12,11 @@ Additionally, index maps created using the community standard are recognized by 
 
 For example, GeoBlacklight will use the "label" property to provide a mouseover tooltip on the map:
 
-![label used as tooltip](https://kgjenkins.github.io/openindexmaps-workshop/image/label-tooltip.png)
+![label used as tooltip](/image/label-tooltip.png)
 
 GeoBlacklight will also display the thumbnailUrl image along with the other OpenIndexMaps property values when a feature is clicked:
 
-![GeoBlacklight index map click](https://kgjenkins.github.io/openindexmaps-workshop/image/gbl-click.png)
+![GeoBlacklight index map click](/image/gbl-click.png)
 
 Not all functionality has been incorporated into GeoBlacklight yet.  For example, only the top polygon of overlapping polygons in an index map can be selected by a cursor, although overlapping polygons are suggested in the standard when multiple editions of a single map sheet are available.  
 
