@@ -10,6 +10,8 @@ It describes a set of common properties that can be used to describe each item (
 
 Additionally, index maps created using the community standard are recognized by GeoBlacklight software.  Institutions can utilize the power of online index maps as an interactive finding aid.
 
+[Example at Cornell University](https://cugir.library.cornell.edu/catalog/cugir-009099)
+
 For example, GeoBlacklight will use the "label" property to provide a mouseover tooltip on the map:
 
 ![label used as tooltip](/image/label-tooltip.png)
