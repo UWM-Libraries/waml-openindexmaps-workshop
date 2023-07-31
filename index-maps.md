@@ -12,6 +12,10 @@ Or they can even be lines, each representing a LiDAR collection flight line:
 
 ![line index map](/image/index-map-lines.png)
 
+Paper index maps in map drawers are not always readable, so creating a GIS version can not only provide an online finding aid, but can more clearly show which maps cover which geographic region.
+
+![china index map](/image/china-map.png)
+
 ----
 
 Next: [OpenIndexMaps](openindexmaps)
