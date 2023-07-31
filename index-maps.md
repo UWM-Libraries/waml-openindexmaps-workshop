@@ -18,7 +18,7 @@ Paper index maps in map drawers are not always readable, so creating a GIS versi
 
 Here is an article that goes into more detail about creating GIS index maps.
 
-![Digital Index Maps: Leveraging GIS to Create Metadata for Online Map Collections](https://waml.org/waml-information-bulletin/49-2/digital-index-maps-leveraging-gis-to-create-metadata-for-online-map-collections/)
+[Digital Index Maps: Leveraging GIS to Create Metadata for Online Map Collections](https://waml.org/waml-information-bulletin/49-2/digital-index-maps-leveraging-gis-to-create-metadata-for-online-map-collections/)
 
 ----
 
