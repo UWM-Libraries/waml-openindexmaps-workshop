@@ -26,7 +26,7 @@ Most versions of QGIS will work  fine for the limited functionality needed for t
 
 ### Download the data for this workshop:
 - [Click this link to download](https://github.com/UWM-Libraries/waml-openindexmaps-workshop/releases/download/v1.1/data.zip)
-and then unzip the data direcotry to the desktop.
+and then unzip the data folder to the desktop.
 - Alternatively, If you are familiar with Git and GitHub, you can clone
 [the website repository](https://github.com/uwm-libraries/waml-openindexmaps-workshop/)
 to your computer and access the data in the `data` directory.
