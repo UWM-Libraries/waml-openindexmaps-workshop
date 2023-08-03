@@ -41,27 +41,24 @@ Notice the values found in the different fields.
 This example shapefile is a slightly modified extraction from the American Geogrpaphical Society Library's (AGSL) Geodex system,
 which uses it's own schema that pre-dates the OpenIndexMap schema.
 
-```
-OBJECTID : uniquely identifies each tile
-RECORD : the sheet number
-LOCATION : the sheet title
-DATE : the publication date for the sheet
-SERIES_TIT : a title for the series
-(note two distinct series in our example)
-PUBLISHER : the publisher for the sheet 
-(again note the two options for this example)
-SCALE : the scale of the sheet. In a regular series like this one, it will be the same for all sheets.
-PRODUCTION : indicating if the map is colored, 2-color, or blueprint
-CATLOC : The AGSL call number
-TOWNS : unique to this set, a list of towns on the sheet.
-HOLDINGS : a boolean if the item is held by the library or not
-ONLINE : a link to the item in the digital collections
-SCAN_NUM : a unique id the AGSL uses to identify scans
-X1 : westernmost extent
-X2 : easternmost extent
-Y1 : northernmost extent
-Y2 : southernmost extent
-```
+### Existing Fields:
+- OBJECTID : uniquely identifies each tile
+- RECORD : the sheet number
+- LOCATION : the sheet title
+- DATE : the publication date for the sheet
+- SERIES_TIT : a title for the series (note two distinct series in our example)
+- PUBLISHER : the publisher for the sheet (again note the two options for this example)
+- SCALE : the scale of the sheet. In a regular series like this one, it will be the same for all sheets.
+- PRODUCTION : indicating if the map is colored, 2-color, or blueprint
+- CATLOC : The AGSL call number
+- TOWNS : unique to this set, a list of towns on the sheet.
+- HOLDINGS : a boolean if the item is held by the library or not
+- ONLINE : a link to the item in the digital collections
+- SCAN_NUM : a unique id the AGSL uses to identify scans
+- X1 : westernmost extent
+- X2 : easternmost extent
+- Y1 : northernmost extent
+- Y2 : southernmost extent
 
 Note that some of the data is the same for each sheet in the set. 
 See the note about [set- and flight-level metadata](https://openindexmaps.org/specification/1.0.0#set--and-flight-level-metadata)
@@ -83,34 +80,33 @@ The source expressions can be typed in directly, but if you click on the epsilon
 Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
 
 !["before" view of Refactor Fields window](/image/ex1-refactor-fields-before.png)
+
 *Before view*
 
-```
-OBJECTID -> Remove Field (select and click 'Delete Selected Field')
-RECORD -> `label`
-LOCATION -> `title`
-DATE -> `datePub`
-SERIES_TIT -> `edition` or omit
-(note two distinct series in our example)
-PUBLISHER -> `publisher` 
-(again note the two options for this example)
-SCALE -> `scale`
-PRODUCTION -> `color`
-CATLOC -> `instCallNo`
-TOWNS -> `location` *Set length to 255!*
-HOLDINGS -> `available`
-ONLINE -> `digHold`
-SCAN_NUM -> `recId`
-X1 -> `west`
-X2 -> `east`
-Y1 -> `north`
-Y2 -> `south`
-```
+### Field Mapping:
+- OBJECTID -> Remove Field (select and click 'Delete Selected Field')
+- RECORD -> label
+- LOCATION -> title
+- DATE -> datePub
+- SERIES_TIT -> edition or omit (note two distinct series in our example)
+- PUBLISHER -> publisher (again note the two options for this example)
+- SCALE -> scale
+- PRODUCTION -> color
+- CATLOC -> instCallNo
+- TOWNS -> location *Set length to 255!*
+- HOLDINGS -> available
+- ONLINE -> digHold
+- SCAN_NUM -> recId
+- X1 -> west
+- X2 -> east
+- Y1 -> north
+- Y2 -> south
 
 When deciding which fields to use for `north`, `south`, `east`, and `west` ensure that you look closely how the input data is formatted.
 Remember that negative longitudes indicate the western hemisphere and negative latitudes represent the southern hemisphere.
 
 !["after" view of Refactor Fields window](/image/ex1-refactor-fields-after.png)
+
 *After view. Yours may look different if you made different choices!*
 
 - Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
@@ -149,15 +145,16 @@ At this time, there are no standard properties for the index map as a whole,
 but that is something that OpenIndexMaps may develop in the future.
 Here is an example of what Cornell University does in their CUGIR portal:
 
-#```
+```
 {
 "type": "FeatureCollection",
 "name": "cugir-009099-index",
 "title": "Index of 2-meter DEM, Tompkins County NY, 2008",
 "websiteUrl": "https://cugir.library.cornell.edu/catalog/cugir-009099",
-#```
+```
 
-For the cuba example, you could make two separate index maps for the 'Carta Militar De La Republica De Cuba 1:62,500' set and the 'Military Map of Cuba 1:62,500' set.
+
+For the cuba example, you could make two separate index maps for the *Carta Militar De La Republica De Cuba 1:62,500* set and the *Military Map of Cuba 1:62,500* set.
 
 ## A word of warning
 
