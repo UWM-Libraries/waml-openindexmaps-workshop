@@ -1,7 +1,5 @@
 # Exercise 1: Create a polygon index map from an existing shapefile
 
-TODO: Data Introduction
-
 If you have not already downloaded the data for this workshop, do so now:
 
 [Download Data](/index.md/#download-the-data-for-this-workshop)
