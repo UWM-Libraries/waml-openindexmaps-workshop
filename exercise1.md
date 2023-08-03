@@ -82,7 +82,7 @@ The source expressions can be typed in directly, but if you click on the epsilon
 
 Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
 
-!["before" view of Refactor Fields window](/image/ex1-expression-dialog-before.png)
+!["before" view of Refactor Fields window](/image/ex1-refactor-fields-before.png)
 *Before view*
 
 ```
@@ -110,7 +110,7 @@ Y2 -> `south`
 When deciding which fields to use for `north`, `south`, `east`, and `west` ensure that you look closely how the input data is formatted.
 Remember that negative longitudes indicate the western hemisphere and negative latitudes represent the southern hemisphere.
 
-!["after" view of Refactor Fields window](/image/ex1-expression-dialog-after.png)
+!["after" view of Refactor Fields window](/image/ex1-refactor-fields-after.png)
 *After view. Yours may look different if you made different choices!*
 
 - Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
