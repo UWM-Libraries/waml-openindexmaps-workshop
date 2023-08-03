@@ -25,8 +25,8 @@ and what is installed in the computer lab.
 Most versions of QGIS will work  fine for the limited functionality needed for the workshop.
 
 ### Download the data for this workshop:
-- Link will be posted before the workshop, download and unzip.
-Data is found in the `data` directory.
+- [Click this link to download](https://github.com/UWM-Libraries/waml-openindexmaps-workshop/releases/download/v1.1/data.zip)
+and then unzip the data direcotry to the desktop.
 - Alternatively, If you are familiar with Git and GitHub, you can clone
 [the website repository](https://github.com/uwm-libraries/waml-openindexmaps-workshop/)
 to your computer and access the data in the `data` directory.
