@@ -75,10 +75,6 @@ In this case, we are putting the size into a note so that it will display in the
 **Be sure to set all the types to string and set the Length to 255!** The schema specifies no limit to the length of the string in any element,
 but in this case, setting a reasonably high limit only impacts the layer created in memory and not the output GeoJSON.
 
-The source expressions can be typed in directly, but if you click on the epsilon (&epsilon;), QGIS will open an expression editor that provides a full list of available functions, along with syntax highlighting, error checking, and a preview of the output based on the first record.
-
-Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
-
 !["before" view of Refactor Fields window](/image/ex1-refactor-fields-before.png)
 
 *Before view*
@@ -93,7 +89,7 @@ Pay close attention to quotes in expressions.  Double quotes (sometimes optional
 - SCALE -> scale
 - PRODUCTION -> color
 - CATLOC -> instCallNo
-- TOWNS -> location *Set length to 255!*
+- TOWNS -> location*
 - HOLDINGS -> available
 - ONLINE -> digHold
 - SCAN_NUM -> recId
@@ -104,6 +100,22 @@ Pay close attention to quotes in expressions.  Double quotes (sometimes optional
 
 When deciding which fields to use for `north`, `south`, `east`, and `west` ensure that you look closely how the input data is formatted.
 Remember that negative longitudes indicate the western hemisphere and negative latitudes represent the southern hemisphere.
+
+The source expressions can be typed in directly, but if you click on the epsilon (&epsilon;), QGIS will open an expression editor that provides a full list of available functions, along with syntax highlighting, error checking, and a preview of the output based on the first record.
+
+Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
+
+/* For the `location` field, we need to write an expression to ensure that we format our simple comma delimited string of locations as a valid JSON array:
+![expression dialog for location field](/image/ex1-expression-dialog.png)
+
+Type this exactly or copy-paste into the expression editor.
+```
+if(length("TOWNS") > 0,concat('["',replace("TOWNS",',','","'),'"]'),NULL)
+```
+
+The expression above checks the length of the existing TOWNS field.
+If the length is greater than 0, or in other words, there are towns listed, it formats the list as a valid JSON string by adding square brackets and double quotes to the list.
+If the length is not greater than 0, or in other words, it is Null, then it simply keeps the field null.
 
 !["after" view of Refactor Fields window](/image/ex1-refactor-fields-after.png)
 
