@@ -11,78 +11,117 @@ Be sure to extract the contents of the .zip file to your computer.
 ## 1. Add the data to QGIS
 
 - Start a new project in QGIS (Project menu > New)
-- Add the /exercise1/cuba_62k_1913_gdx.shp by dragging it onto QGIS
+- Add the /exercise1/cuba_62k_gdx.shp by dragging it onto QGIS
 
 Let's verify that the data is in the correct location by adding a basemap, and set our map to use the CRS of the basemap.
 
 - Web > QuickMapServices > OSM > OSM Standard`
-- Right-click the "OSM Standard" layer name > Layer CRS > Set Project CRS from Layer`
+- Right-click the "OSM Standard" layer name > Layer CRS > Set Project CRS from Layer.
+Check the lower right corner of QGIS to confirm the Project CRS is set to `EPSG:3857`
 
 ## 2. Add some style
 
 To improve the visibility of both the index map and the basemap, let's change the style of the index map:
 
 - Open the Layer Styling panel ![processing toolbox button](/image/layer-styling-button.png)
-- Select the "cuba_62k_1913_gdx" layer
-- Click "Simple fill"
-- Set the "Fill color" to purple with about 50% opacity
-(another option would be to set the "Fill style" to "No Brush")
+- Select the "cuba_62k_gdx" layer in the Layers panel
+- In the Layer Styling panel click "Simple fill"
+- Set the "Fill color" to purple
+- Under Layer Rendering, set the Opacity to 50%
 - Set the "Stroke color" to dark purple
 
 ## 3. Explore the data
 
 Let's explore the values in the table, to get an idea of how we might want to convert the fields into OpenIndexMaps properties.
 
-- Right-click the "cuba_62k_1913_gdx" layer > Open Attribute Table
+- Right-click the "cuba_62k_gdx" layer > Open Attribute Table
 
-`TODO: replace the field names with GDX or cleaned up version`
-`I'm going to clean up the data because Geodex has so many fields that we won't use in the workshop. Still TODO!`
+Notice the values found in the different fields.
 
-Notice the values found in the different fields:
+This example shapefile is a slightly modified extraction from the American Geogrpaphical Society Library's (AGSL) Geodex system,
+which uses it's own schema that pre-dates the OpenIndexMap schema.
 
 ```
-FILENAME : uniquely identifies each tile
-SIZE : size in bytes
-COLLECTION : always the same
-YEAR : always the same
-PARTIAL : indicates tiles with incomplete coverage
-DEM_COLLEC : always the same
-TILE_DATE : always the same
-NOTES : empty
-DIRECT_DL : download url
-Shape_Leng : irrelevant
-Shape_Area : irrelevant
+OBJECTID : uniquely identifies each tile
+RECORD : the sheet number
+LOCATION : the sheet title
+DATE : the publication date for the sheet
+SERIES_TIT : a title for the series
+(note two distinct series in our example)
+PUBLISHER : the publisher for the sheet 
+(again note the two options for this example)
+SCALE : the scale of the sheet. In a regular series like this one, it will be the same for all sheets.
+PRODUCTION : indicating if the map is colored, 2-color, or blueprint
+CATLOC : The AGSL call number
+TOWNS : unique to this set, a list of towns on the sheet.
+HOLDINGS : a boolean if the item is held by the library or not
+ONLINE : a link to the item in the digital collections
+SCAN_NUM : a unique id the AGSL uses to identify scans
+X1 : westernmost extent
+X2 : easternmost extent
+Y1 : northernmost extent
+Y2 : southernmost extent
 ```
 
 Note that some of the data is the same for each sheet in the set. 
-See the note about [Set- and Flight-level metadata](https://openindexmaps.org/specification/1.0.0#set--and-flight-level-metadata)
+See the note about [set- and flight-level metadata](https://openindexmaps.org/specification/1.0.0#set--and-flight-level-metadata)
 in the schema documentation.
 
-QGIS has a processing tool called "Refactor fields" that will let us rename, delete, and manipulate the values of these fields
+QGIS has a processing tool called "Refactor fields" that will let us rename, delete, and manipulate the values of these fields.
 
 ## 4. Refactor Fields
 
-In the processing toolbox, search for "refactor fields" and open the tool.  The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.  In this case, we are putting the size into a note so that it will display in the GBL interface.
+In the processing toolbox, search for "refactor fields" and open the tool.
+The settings below will output a copy of the index map with just four fields: title, label, note, and downloadUrl.
+In this case, we are putting the size into a note so that it will display in the GBL interface.
 
-**Be sure to set all the types to string!**  The length and precision values don't matter for strings.
-
-`TODO: Replace Image`
-
-![refactor fields dialog](/image/ex1-refactor-fields.png)
+**Be sure to set all the types to string and set the Length to 255!** The schema specifies no limit to the length of the string in any element,
+but in this case, setting a reasonably high limit only impacts the layer created in memory and not the output GeoJSON.
 
 The source expressions can be typed in directly, but if you click on the epsilon (&epsilon;), QGIS will open an expression editor that provides a full list of available functions, along with syntax highlighting, error checking, and a preview of the output based on the first record.
 
 Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
 
-`TODO: Replace Image`
+!["before" view of Refactor Fields window](/image/ex1-expression-dialog-before.png)
+*Before view*
 
-![expression dialog](/image/ex1-expression-dialog.png)
+```
+OBJECTID -> Remove Field (select and click 'Delete Selected Field')
+RECORD -> `label`
+LOCATION -> `title`
+DATE -> `datePub`
+SERIES_TIT -> `edition` or omit
+(note two distinct series in our example)
+PUBLISHER -> `publisher` 
+(again note the two options for this example)
+SCALE -> `scale`
+PRODUCTION -> `color`
+CATLOC -> `instCallNo`
+TOWNS -> `location` *Set length to 255!*
+HOLDINGS -> `available`
+ONLINE -> `digHold`
+SCAN_NUM -> `recId`
+X1 -> `west`
+X2 -> `east`
+Y1 -> `north`
+Y2 -> `south`
+```
 
-Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
+When deciding which fields to use for `north`, `south`, `east`, and `west` ensure that you look closely how the input data is formatted.
+Remember that negative longitudes indicate the western hemisphere and negative latitudes represent the southern hemisphere.
 
-Click "Run" and leave the "Refactor fields" dialog open in case you need to make any corrections and run it again.  (You can also get back to via the Processing menu > History)
+!["after" view of Refactor Fields window](/image/ex1-expression-dialog-after.png)
+*After view. Yours may look different if you made different choices!*
 
-You should have a new layer called "Refactored" on your map.  Use the identify tool or look at the attribute table to make sure the results look right.  If you need to make any corrections, remove the "Refactored" layer, then go back to the "Parameters" tab of the dialog, make your changes and run it again.
+- Leave the default setting "Create temporary layer", which will let you see the output without cluttering up your drive with files.
+
+- Click "Run" and leave the "Refactor fields" dialog open in case you need to make any corrections and run it again.  (You can also get back to via the Processing menu > History)
+
+You should have a new layer called "Refactored" on your map.
+Use the identify tool or look at the attribute table to make sure the results look right.
+If you need to make any corrections, remove the "Refactored" layer, 
+then go back to the "Parameters" tab of the dialog,
+make your changes and run it again.
 
 ## 5. Save as GeoJSON
 
@@ -104,11 +143,11 @@ Now you should have an index map saved as a GeoJSON file!  If you open it in a t
 
 You could also copy or drag the GeoJSON into [geojsonlint.com](http://geojsonlint.com/), which will check for any parsing errors and also render the GeoJSON in a map.
 
-```
-TODO: Replace this example
-
-
-Notice that only metadata is the "name", which we be whatever you named the file.  It would be a good idea to provide a bit more information, which could be added manually.  At this time, there are no standard properties for the index map as a whole, but that is something that OpenIndexMaps may develop in the future.  Here is an example of what we do for CUGIR:
+Notice that only set-level metadata is the "name", which we be whatever you named the file.
+It would be a good idea to provide a bit more information, which could be added manually.
+At this time, there are no standard properties for the index map as a whole,
+but that is something that OpenIndexMaps may develop in the future.
+Here is an example of what Cornell University does in their CUGIR portal:
 
 #```
 {
@@ -117,7 +156,8 @@ Notice that only metadata is the "name", which we be whatever you named the file
 "title": "Index of 2-meter DEM, Tompkins County NY, 2008",
 "websiteUrl": "https://cugir.library.cornell.edu/catalog/cugir-009099",
 #```
-```
+
+For the cuba example, you could make two separate index maps for the 'Carta Militar De La Republica De Cuba 1:62,500' set and the 'Military Map of Cuba 1:62,500' set.
 
 ## A word of warning
 
