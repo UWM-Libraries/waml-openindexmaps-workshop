@@ -103,7 +103,7 @@ The source expressions can be typed in directly, but if you click on the epsilon
 
 Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
 
-/* For the `location` field, we need to write an expression to ensure that we format our simple comma delimited string of locations as a valid JSON array:
+\* For the `location` field, we need to write an expression to ensure that we format our simple comma delimited string of locations as a valid JSON array:
 
 ![expression dialog for location field](/image/ex1-expression-dialog.png)
 
