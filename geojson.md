@@ -1,8 +1,17 @@
 # GeoJSON
 
-GeoJSON is a geospatial data format designed for use on the web.  Like other JSON formats, it is a lightweight data-interchange format that is easy for a computer to parse, but is also relatively human-readable.  JSON is based on JavaScript Object Notation, but is also used across most other programming languages.
+GeoJSON is a geospatial data format designed for use on the web.
+Like other formats based on JSON (JavaScript Object Notation),
+it is a lightweight data-interchange format that is easy for a computer to parse,
+but is also relatively human-readable. 
 
-GeoJSON provides a standard way to add geospatial location information to JSON.  It was originally released in 2008 as a community-developed specification, and was quickly adopted by many geospatial projects.  It was later revised to become an official IETF specification ([RFC 7946](https://tools.ietf.org/html/rfc7946)) in 2016.  One of the major changes was that, whereas the 2008 allowed arbitrary coordinate systems, the 2016 standard mandates WGS84 (lon, lat) coordinates.
+GeoJSON provides a standard way to store geospatial location information.
+It was originally released in 2008 as a community-developed specification,
+and was quickly adopted by many geospatial projects.
+It was later revised to become an official IETF specification ([RFC 7946](https://tools.ietf.org/html/rfc7946))
+in 2016.
+One of the major changes was that, whereas the 2008 allowed arbitrary coordinate systems,
+the 2016 standard mandates WGS84 (lon, lat) coordinates.
 
 Example of a point in GeoJSON:
 ```
@@ -63,7 +72,7 @@ Things to know about GeoJSON:
 - Online tools
   - [GeoJSONLint](http://geojsonlint.com/) validates and previews GeoJSON
   - [GeoJSON.io](http://geojson.io/) validates, also edits and converts formats
-- GeoJSON is not recommended for large datasets (>10MB) but should be fine for most index maps
+- GeoJSON is not recommended for very large datasets
 
 ----
 

@@ -99,11 +99,15 @@ but in this case, setting a reasonably high limit only impacts the layer created
 When deciding which fields to use for `north`, `south`, `east`, and `west` ensure that you look closely how the input data is formatted.
 Remember that negative longitudes indicate the western hemisphere and negative latitudes represent the southern hemisphere.
 
-The source expressions can be typed in directly, but if you click on the epsilon (&epsilon;), QGIS will open an expression editor that provides a full list of available functions, along with syntax highlighting, error checking, and a preview of the output based on the first record.
+The source [expressions](https://docs.qgis.org/3.28/en/docs/user_manual/expressions/expression.html)
+can be typed in directly, but if you click on the epsilon (&epsilon;), 
+QGIS will open an expression editor that provides a full list of available functions,
+along with syntax highlighting, error checking,
+and a preview of the output based on the first record.
 
 Pay close attention to quotes in expressions.  Double quotes (sometimes optional) indicate a field name, whereas single quotes indicate a literal text string.
 
-\* For the `location` field, we need to write an expression to ensure that we format our simple comma delimited string of locations as a valid JSON array:
+\* For the `location` field, we need to write an expression to ensure that we format our simple comma delimited string of locations as a valid GeoJSON array:
 
 ![expression dialog for location field](/image/ex1-expression-dialog.png)
 
